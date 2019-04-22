@@ -1,0 +1,11 @@
+github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
+github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+github.com/starlight-go/starlight v0.0.0-20181207205707-b06f321544f3 h1:/fBh1Ot84ILt/ociFHO98wJ9LxIMA3UG8B0unUJPFpY=
+github.com/starlight-go/starlight v0.0.0-20181207205707-b06f321544f3/go.mod h1:pxOc2ZuBV+CNlQgzq/HJ9Z9G/eoEMHFeuGohOvva4Co=
+go.starlark.net v0.0.0-20190308211644-3d5a06166f9f h1:/C7qSen5YNY/3oPDlQ64m+rMjz4plfz+uHQRaW/eF1Y=
+go.starlark.net v0.0.0-20190308211644-3d5a06166f9f/go.mod h1:c1/X6cHgvdXj6pUlmWKMkuqRnW4K8x2vwt6JAaaircg=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0 h1:POO/ycCATvegFmVuPpQzZFJ+pGZeX22Ufu6fibxDVjU=
+gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0/go.mod h1:WDnlLJ4WF5VGsH/HVa3CI79GS0ol3YnhVnKP89i0kNg=
+gopkg.in/yaml.v2 v2.2.2 h1:ZCJp+EgiOT7lHqUV2J862kp8Qj64Jo6az82+3Td9dZw=
+gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
