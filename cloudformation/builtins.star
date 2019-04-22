@@ -3,7 +3,7 @@ PARAMETER_TYPE_NUMBER = "Number"
 PARAMETER_TYPE_LIST_NUMBER = "List<Number>"
 PARAMETER_TYPE_COMMA_DELIMITED_LIST = "CommaDelimitedList"
 
-def Resource(type, properties=None, depends_on=None):
+def Resource(type, properties = None, depends_on = None):
     out = {"Type": type}
     if depends_on != None:
         out["DependsOn"] = depends_on
@@ -26,7 +26,7 @@ def Join(sep, parts):
 def Sub(data):
     return {"Fn::Sub": data}
 
-def Output(value, description=None):
+def Output(value, description = None):
     out = {}
     if description != None:
         out["Description"] = description
@@ -34,18 +34,17 @@ def Output(value, description=None):
     return out
 
 def Parameter(
-    type_,
-    description=None,
-    default=None,
-    allowed_pattern=None,
-    allowed_values=None,
-    constraint_description=None,
-    max_length=None,
-    max_value=None,
-    min_length=None,
-    min_value=None,
-    no_echo=None,
-):
+        type_,
+        description = None,
+        default = None,
+        allowed_pattern = None,
+        allowed_values = None,
+        constraint_description = None,
+        max_length = None,
+        max_value = None,
+        min_length = None,
+        min_value = None,
+        no_echo = None):
     properties = {"Type": type_}
     if description != None:
         properties["Description"] = description
@@ -70,12 +69,11 @@ def Parameter(
     return properties
 
 def Template(
-    description=None,
-    parameters=None,
-    resources=None,
-    outputs=None,
-    version="2010-09-09",
-):
+        description = None,
+        parameters = None,
+        resources = None,
+        outputs = None,
+        version = "2010-09-09"):
     out = {"AWSTemplateFormatVersion": version}
     if description != None:
         out["Description"] = description

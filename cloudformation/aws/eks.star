@@ -1,6 +1,6 @@
 load("cloudformation/builtins", "Resource")
 
-def Cluster(name, role_arn, resources_vpc_config, version=None):
+def Cluster(name, role_arn, resources_vpc_config, version = None):
     properties = {
         "Name": name,
         "RoleArn": role_arn,
@@ -8,4 +8,4 @@ def Cluster(name, role_arn, resources_vpc_config, version=None):
     }
     if version != None:
         properties["Version"] = version
-    return Resource(type="AWS::EKS::Cluster", properties=properties)
+    return Resource(type = "AWS::EKS::Cluster", properties = properties)

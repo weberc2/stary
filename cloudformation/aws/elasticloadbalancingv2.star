@@ -4,17 +4,16 @@ SCHEME_INTERNAL = "internal"
 SCHEME_INTERNET_FACING = "internet-facing"
 
 def LoadBalancer(
-    ip_address_type=None,
-    load_balancer_attributes=None,
-    name=None,
-    scheme=None,
-    security_groups=None,
-    subnet_mappings=None,
-    subnets=None,
-    tags=None,
-    type_=None,
-):
-    properties={}
+        ip_address_type = None,
+        load_balancer_attributes = None,
+        name = None,
+        scheme = None,
+        security_groups = None,
+        subnet_mappings = None,
+        subnets = None,
+        tags = None,
+        type_ = None):
+    properties = {}
     if ip_address_type != None:
         properties["IpAddressType"] = ip_address_type
     if load_balancer_attributes != None:
@@ -34,31 +33,30 @@ def LoadBalancer(
     if type_ != None:
         properties["Type"] = type_
     return Resource(
-        type="AWS::ElasticLoadBalancingV2::LoadBalancer",
-        properties=properties,
+        type = "AWS::ElasticLoadBalancingV2::LoadBalancer",
+        properties = properties,
     )
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html
 def TargetGroup(
-    health_check_enabled=None,
-    health_check_interval_seconds=None,
-    health_check_path=None,
-    health_check_port=None,
-    health_check_protocol=None,
-    health_check_timeout_seconds=None,
-    healthy_threshold_count=None,
-    matcher=None,
-    name=None,
-    port=None,
-    protocol=None,
-    tags=None,
-    target_group_attributes=None,
-    targets=None,
-    target_type=None,
-    unhealthy_threshold_count=None,
-    vpc_id=None,
-    depends_on=None,
-):
+        health_check_enabled = None,
+        health_check_interval_seconds = None,
+        health_check_path = None,
+        health_check_port = None,
+        health_check_protocol = None,
+        health_check_timeout_seconds = None,
+        healthy_threshold_count = None,
+        matcher = None,
+        name = None,
+        port = None,
+        protocol = None,
+        tags = None,
+        target_group_attributes = None,
+        targets = None,
+        target_type = None,
+        unhealthy_threshold_count = None,
+        vpc_id = None,
+        depends_on = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html"""
     properties = {}
     if health_check_enabled != None:
@@ -96,9 +94,9 @@ def TargetGroup(
     if vpc_id != None:
         properties["VpcId"] = vpc_id
     return Resource(
-        properties=properties,
-        type="AWS::ElasticLoadBalancingV2::TargetGroup",
-        depends_on=depends_on,
+        properties = properties,
+        type = "AWS::ElasticLoadBalancingV2::TargetGroup",
+        depends_on = depends_on,
     )
 
 ACTION_TYPE_FORWARD = "forward"
@@ -109,14 +107,13 @@ ACTION_TYPE_FIXED_RESPONSE = "fixed-response"
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listener-defaultactions.html
 def Action(
-    type,
-    authenticate_cognito_config=None,
-    authenticate_oidc_config=None,
-    fixed_response_config=None,
-    order=None,
-    redirect_config=None,
-    target_group_arn=None,
-):
+        type,
+        authenticate_cognito_config = None,
+        authenticate_oidc_config = None,
+        fixed_response_config = None,
+        order = None,
+        redirect_config = None,
+        target_group_arn = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listener-defaultactions.html"""
     properties = {"Type": type}
     if authenticate_cognito_config != None:
@@ -135,16 +132,15 @@ def Action(
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html
 def Listener(
-    default_actions,
-    load_balancer_arn,
-    port,
-    protocol,
-    certificates=None,
-    ssl_policy=None,
-    depends_on=None,
-):
+        default_actions,
+        load_balancer_arn,
+        port,
+        protocol,
+        certificates = None,
+        ssl_policy = None,
+        depends_on = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html"""
-    properties={
+    properties = {
         "DefaultActions": default_actions,
         "LoadBalancerArn": load_balancer_arn,
         "Port": port,
@@ -155,7 +151,7 @@ def Listener(
     if ssl_policy != None:
         properties["SslPolicy"] = ssl_policy
     return Resource(
-        type="AWS::ElasticLoadBalancingV2::Listener",
-        properties=properties,
-        depends_on=depends_on,
+        type = "AWS::ElasticLoadBalancingV2::Listener",
+        properties = properties,
+        depends_on = depends_on,
     )

@@ -5,7 +5,7 @@ ASSIGN_PUBLIC_IP_ENABLED = "ENABLED"
 ASSIGN_PUBLIC_IP_DISABLED = "DISABLED"
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions-logconfiguration.html
-def LogConfiguration(log_driver, options=None):
+def LogConfiguration(log_driver, options = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions-logconfiguration.html"""
     properties = {"LogDriver": log_driver}
     if options != None:
@@ -14,38 +14,37 @@ def LogConfiguration(log_driver, options=None):
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions.html
 def ContainerDefinition(
-    name,
-    image,
-    command=None,
-    cpu=None,
-    memory=None,
-    depends_on=None,
-    disable_networking=None,
-    dns_search_domains=None,
-    dns_servers=None,
-    docker_labels=None,
-    docker_security_options=None,
-    entry_point=None,
-    environment=None,
-    essential=None,
-    extra_hosts=None,
-    health_check=None,
-    hostname=None,
-    links=None,
-    linux_parameters=None,
-    log_configuration=None,
-    memory_reservation=None,
-    mount_points=None,
-    port_mappings=None,
-    privileged=None,
-    readonly_root_filesystem=None,
-    repository_credentials=None,
-    start_timeout=None,
-    stop_timeout=None,
-    ulimits=None,
-    volumes_from=None,
-    working_directory=None,
-):
+        name,
+        image,
+        command = None,
+        cpu = None,
+        memory = None,
+        depends_on = None,
+        disable_networking = None,
+        dns_search_domains = None,
+        dns_servers = None,
+        docker_labels = None,
+        docker_security_options = None,
+        entry_point = None,
+        environment = None,
+        essential = None,
+        extra_hosts = None,
+        health_check = None,
+        hostname = None,
+        links = None,
+        linux_parameters = None,
+        log_configuration = None,
+        memory_reservation = None,
+        mount_points = None,
+        port_mappings = None,
+        privileged = None,
+        readonly_root_filesystem = None,
+        repository_credentials = None,
+        start_timeout = None,
+        stop_timeout = None,
+        ulimits = None,
+        volumes_from = None,
+        working_directory = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions.html"""
     properties = {"Name": name, "Image": image}
     if command != None:
@@ -110,18 +109,17 @@ def ContainerDefinition(
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html
 def TaskDefinition(
-    container_definitions,
-    task_role_arn=None,
-    execution_role_arn=None,
-    cpu=None,
-    memory=None,
-    volumes=None,
-    network_mode=None,
-    family=None,
-    placement_constraints=None,
-    requires_compatibilities=None,
-    proxy_configuration=None,
-):
+        container_definitions,
+        task_role_arn = None,
+        execution_role_arn = None,
+        cpu = None,
+        memory = None,
+        volumes = None,
+        network_mode = None,
+        family = None,
+        placement_constraints = None,
+        requires_compatibilities = None,
+        proxy_configuration = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html"""
     properties = {"ContainerDefinitions": container_definitions}
     if task_role_arn != None:
@@ -141,16 +139,15 @@ def TaskDefinition(
     if placement_constraints != None:
         properties["PlacementConstraints"] = None
     if requires_compatibilities != None:
-        properties["RequiresCompatibilities"] = requires_compatibilities    
+        properties["RequiresCompatibilities"] = requires_compatibilities
     if proxy_configuration != None:
         properties["ProxyConfiguration"] = proxy_configuration
-    return Resource(type="AWS::ECS::TaskDefinition", properties=properties)
+    return Resource(type = "AWS::ECS::TaskDefinition", properties = properties)
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-deploymentconfiguration.html
 def ServiceDeploymentConfiguration(
-    maximum_percent=None,
-    minimum_healthy_percent=None,
-):
+        maximum_percent = None,
+        minimum_healthy_percent = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-deploymentconfiguration.html"""
     properties = {}
     if maximum_percent != None:
@@ -161,10 +158,9 @@ def ServiceDeploymentConfiguration(
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-awsvpcconfiguration.html
 def ServiceAWSVPCConfiguration(
-    subnets,
-    assign_public_ip=None,
-    security_groups=None,
-):
+        subnets,
+        assign_public_ip = None,
+        security_groups = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-awsvpcconfiguration.html"""
     properties = {"Subnets": subnets}
     if assign_public_ip != None:
@@ -183,11 +179,10 @@ def ServiceNetworkConfiguration(awsvpc_configuration):
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-loadbalancers.html
 def ServiceLoadBalancers(
-    container_name,
-    container_port,
-    load_balancer_name=None,
-    target_group_arn=None,
-):
+        container_name,
+        container_port,
+        load_balancer_name = None,
+        target_group_arn = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-loadbalancers.html"""
     properties = {
         "ContainerName": container_name,
@@ -201,23 +196,22 @@ def ServiceLoadBalancers(
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html
 def Service(
-    task_definition,
-    cluster=None,
-    deployment_configuration=None,
-    desired_count=None,
-    health_check_grace_period_seconds=None,
-    launch_type=None,
-    load_balancers=None,
-    network_configuration=None,
-    placement_constraints=None,
-    platform_version=None,
-    role=None,
-    scheduling_strategy=None,
-    service_name=None,
-    service_registries=None,
-):
+        task_definition,
+        cluster = None,
+        deployment_configuration = None,
+        desired_count = None,
+        health_check_grace_period_seconds = None,
+        launch_type = None,
+        load_balancers = None,
+        network_configuration = None,
+        placement_constraints = None,
+        platform_version = None,
+        role = None,
+        scheduling_strategy = None,
+        service_name = None,
+        service_registries = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html"""
-    properties={"TaskDefinition": task_definition}
+    properties = {"TaskDefinition": task_definition}
     if cluster != None:
         properties["Cluster"] = cluster
     if deployment_configuration != None:
@@ -244,10 +238,10 @@ def Service(
         properties["ServiceName"] = service_name
     if service_registries != None:
         properties["ServiceRegistries"] = service_registries
-    return Resource(type="AWS::ECS::Service", properties=properties)
+    return Resource(type = "AWS::ECS::Service", properties = properties)
 
-def Cluster(cluster_name=None):
+def Cluster(cluster_name = None):
     properties = {}
     if cluster_name != None:
         properties["ClusterName"] = cluster_name
-    return Resource(type="AWS::ECS::Cluster", properties=properties)
+    return Resource(type = "AWS::ECS::Cluster", properties = properties)

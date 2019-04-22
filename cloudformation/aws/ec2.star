@@ -83,13 +83,12 @@ INSTANCE_TYPE_Z1D_6XLARGE = "z1d.6xlarge"
 INSTANCE_TYPE_Z1D_12XLARGE = "z1d.12xlarge"
 
 def SecurityGroup(
-    vpc_id,
-    group_name=None,
-    group_description=None,
-    security_group_ingress=None,
-    security_group_egress=None,
-    tags=None,
-):
+        vpc_id,
+        group_name = None,
+        group_description = None,
+        security_group_ingress = None,
+        security_group_egress = None,
+        tags = None):
     properties = {"VpcId": vpc_id}
     if group_name != None:
         properties["GroupName"] = group_name
@@ -101,19 +100,19 @@ def SecurityGroup(
         properties["SecurityGroupEgress"] = security_group_egress
     if tags != None:
         properties["Tags"] = [
-            {"Key": key, "Value": value} for key, value in tags.items()
+            {"Key": key, "Value": value}
+            for key, value in tags.items()
         ]
-    return Resource(type="AWS::EC2::SecurityGroup", properties=properties)
+    return Resource(type = "AWS::EC2::SecurityGroup", properties = properties)
 
 def SecurityGroupIngress(
-    group_id=None,
-    source_security_group_id=None,
-    description=None,
-    ip_protocol=None,
-    from_port=None,
-    to_port=None,
-    depends_on=None,
-):
+        group_id = None,
+        source_security_group_id = None,
+        description = None,
+        ip_protocol = None,
+        from_port = None,
+        to_port = None,
+        depends_on = None):
     properties = {}
     if group_id != None:
         properties["GroupId"] = group_id
@@ -128,21 +127,20 @@ def SecurityGroupIngress(
     if to_port != None:
         properties["ToPort"] = to_port
     return Resource(
-        type="AWS::EC2::SecurityGroupIngress",
-        properties=properties,
-        depends_on=depends_on,
+        type = "AWS::EC2::SecurityGroupIngress",
+        properties = properties,
+        depends_on = depends_on,
     )
 
 def SecurityGroupEgress(
-    group_id,
-    destination_security_group_id=None,
-    description=None,
-    ip_protocol=None,
-    from_port=None,
-    to_port=None,
-    depends_on=None,
-    cidr_ip=None,
-):
+        group_id,
+        destination_security_group_id = None,
+        description = None,
+        ip_protocol = None,
+        from_port = None,
+        to_port = None,
+        depends_on = None,
+        cidr_ip = None):
     properties = {}
     if description != None:
         properties["Description"] = description
@@ -158,25 +156,24 @@ def SecurityGroupEgress(
     if cidr_ip != None:
         properties["CidrIp"] = cidr_ip
     return Resource(
-        type="AWS::EC2::SecurityGroupEgress",
-        properties=properties,
-        depends_on=depends_on,
+        type = "AWS::EC2::SecurityGroupEgress",
+        properties = properties,
+        depends_on = depends_on,
     )
 
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html
 def SecurityGroupRule(
-    ip_protocol,
-    cidr_ip=None,
-    cidr_ipv6=None,
-    description=None,
-    destination_prefix_list_id=None,
-    destination_security_group_id=None,
-    from_port=None,
-    source_security_group_id=None,
-    source_security_group_name=None,
-    source_security_group_owner_id=None,
-    to_port=None,
-):
+        ip_protocol,
+        cidr_ip = None,
+        cidr_ipv6 = None,
+        description = None,
+        destination_prefix_list_id = None,
+        destination_security_group_id = None,
+        from_port = None,
+        source_security_group_id = None,
+        source_security_group_name = None,
+        source_security_group_owner_id = None,
+        to_port = None):
     """https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-rule.html"""
     properties = {"IpProtocol": ip_protocol}
     if cidr_ip != None:
