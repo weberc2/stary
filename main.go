@@ -94,8 +94,20 @@ func (s Struct) Hash() (uint32, error) {
 	return adler32.Checksum(buf), nil
 }
 
+func (s Struct) SetField(name string, val sl.Value) error {
+	for i, field := range s {
+		if field.Name == name {
+			s[i].Value = val
+			return nil
+		}
+	}
+	return sl.NoSuchAttrError(name)
+}
+
 func slYAML(v sl.Value) (interface{}, error) {
 	switch x := v.(type) {
+	case sl.NoneType:
+		return nil, nil
 	case *sl.Dict:
 		m := make(yaml.MapSlice, x.Len())
 		for i, key := range x.Keys() {
